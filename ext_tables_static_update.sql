@@ -269,7 +269,8 @@ UPDATE static_countries SET cn_short_fr='Palestine' WHERE cn_iso_2='PS';
 UPDATE static_countries SET cn_short_fr='Serbie-et-Monténégro' WHERE cn_iso_2='CS';
 UPDATE static_countries SET cn_short_fr='Îles d’Åland' WHERE cn_iso_2='AX';
 UPDATE static_countries SET cn_short_fr='Île Heard et les Îles McDonald' WHERE cn_iso_2='HM';
-
+UPDATE static_countries SET cn_short_de='Monténégro' WHERE cn_iso_2='ME';
+UPDATE static_countries SET cn_short_de='Serbie' WHERE cn_iso_2='RS';
 
 ## static_country_zones
 UPDATE static_country_zones SET zn_name_fr='' WHERE zn_country_iso_2='US' AND zn_code='AL';
@@ -1097,43 +1098,3 @@ UPDATE static_languages SET lg_name_fr='Avestique' WHERE lg_iso_2='AE' AND lg_co
 UPDATE static_languages SET lg_name_fr='Slavon' WHERE lg_iso_2='CU' AND lg_country_iso_2='';
 UPDATE static_languages SET lg_name_fr='Ido' WHERE lg_iso_2='IO' AND lg_country_iso_2='';
 UPDATE static_languages SET lg_name_fr='Pâli' WHERE lg_iso_2='PI' AND lg_country_iso_2='';
-
-
-## static_taxes
-UPDATE static_taxes SET tx_name_fr='' WHERE tx_country_iso_2='CA' AND tx_zn_code='SK' AND tx_code='SKRST';
-UPDATE static_taxes SET tx_name_fr='TVQ' WHERE tx_country_iso_2='CA' AND tx_zn_code='QC' AND tx_code='TVQ';
-UPDATE static_taxes SET tx_name_fr='TPS' WHERE tx_country_iso_2='CA' AND tx_zn_code='' AND tx_code='GST';
-UPDATE static_taxes SET tx_name_fr='' WHERE tx_country_iso_2='CA' AND tx_zn_code='MB' AND tx_code='MBRST';
-UPDATE static_taxes SET tx_name_fr='' WHERE tx_country_iso_2='CA' AND tx_zn_code='BC' AND tx_code='BCRST';
-UPDATE static_taxes SET tx_name_fr='' WHERE tx_country_iso_2='CA' AND tx_zn_code='ON' AND tx_code='ONRST';
-UPDATE static_taxes SET tx_name_fr='TVH' WHERE tx_country_iso_2='CA' AND tx_zn_code='NB' AND tx_code='HST';
-UPDATE static_taxes SET tx_name_fr='TVH' WHERE tx_country_iso_2='CA' AND tx_zn_code='NS' AND tx_code='HST';
-UPDATE static_taxes SET tx_name_fr='' WHERE tx_country_iso_2='CA' AND tx_zn_code='PE' AND tx_code='PERST';
-UPDATE static_taxes SET tx_name_fr='TVH' WHERE tx_country_iso_2='CA' AND tx_zn_code='NL' AND tx_code='HST';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='BE' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='CZ' AND tx_zn_code='' AND tx_code='GST';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='DK' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='DE' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='EE' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='GR' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='ES' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='FR' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='IE' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='IT' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='CY' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='LV' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='LT' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='LU' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='HU' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='MT' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='NL' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='AT' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='PT' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='SI' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='SK' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='FI' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='SE' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='GB' AND tx_zn_code='' AND tx_code='VAT';
-UPDATE static_taxes SET tx_name_fr='TVA' WHERE tx_country_iso_2='MX' AND tx_zn_code='' AND tx_code='IVA';
-
-

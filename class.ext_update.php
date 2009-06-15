@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005-2006 René Fritz (r.fritz@colorcube.de)
+*  (c) 2005-2009 René Fritz (r.fritz@colorcube.de)
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -24,12 +24,14 @@
 
 
 
-require_once (t3lib_extMgm::extPath('static_info_tables').'class.tx_staticinfotables_encoding.php');
+require_once(t3lib_extMgm::extPath('static_info_tables') . 'class.tx_staticinfotables_encoding.php');
 
 /**
  * Class for updating the db
  *
  * @author	 René Fritz <r.fritz@colorcube.de>
+ *
+ * $Id$
  */
 class ext_update  {
 
@@ -44,40 +46,37 @@ class ext_update  {
 
 		$content.= '<br />Update the Static Info Tables with new language labels.';
 		$content .= '<br />';
+		$import = t3lib_div::_GP('import');
 
-		if (t3lib_div::_GP('import')) {
+		if ($import) {
 
 			$destEncoding = t3lib_div::_GP('dest_encoding');
-
 			$extPath = t3lib_extMgm::extPath('static_info_tables_fr');
-			$fileContent = explode("\n", t3lib_div::getUrl($extPath.'ext_tables_static_update.sql'));
+			$fileContent = explode("\n", t3lib_div::getUrl($extPath . 'ext_tables_static_update.sql'));
 
-			foreach($fileContent as $line)	{
-				if ($line=trim($line) AND preg_match('#^UPDATE#i', $line))	{
-
+			foreach ($fileContent as $line)	{
+				$line=trim($line);
+				if ($line && preg_match('#^UPDATE#i', $line))	{
 					$query = $this->getUpdateEncoded ($line, $destEncoding);
 					$res = $GLOBALS['TYPO3_DB']->admin_query($query);
-
 				}
 			}
 			$content .= '<br />';
-			$content .= '<p>Encoding: '.htmlspecialchars($destEncoding).'</p>';
+			$content .= '<p>Encoding: ' . htmlspecialchars($destEncoding) . '</p>';
 			$content .= '<p>Done.</p>';
 
-		} elseif (t3lib_extMgm::isLoaded('static_info_tables_fr')) {
-
+		} elseif (t3lib_extMgm::isLoaded('static_info_tables')) {
 			$content .= '</form>';
-			$content .= '<form action="'.htmlspecialchars(t3lib_div::linkThisScript()).'" method="post">';
+			$content .= '<form action="' . htmlspecialchars(t3lib_div::linkThisScript()) . '" method="post">';
 			$content .= '<br />Destination character encoding:';
-            $content .= '<br />'.tx_staticinfotables_encoding::getEncodingSelect('dest_encoding', '', 'utf-8');
+            $content .= '<br />' . tx_staticinfotables_encoding::getEncodingSelect('dest_encoding', '', 'utf-8');
 			$content .= '<br />(The character encoding must match the encoding of the existing tables data. By default this is UTF-8.)';
 			$content .= '<br /><br />';
 			$content .= '<input type="submit" name="import" value="Import" />';
 			$content .= '</form>';
 
 		} else {
-
-			$content .= '<br /><strong>The extension needs to be installed first!</strong>';
+			$content .= '<br /><strong>The extension "static_info_tables" needs to be installed first!</strong>';
 		}
 
 		return $content;
@@ -94,8 +93,8 @@ class ext_update  {
 	function getUpdateEncoded ($query, $destEncoding) {
 		static $csconv;
 
-		if (!($destEncoding=='utf-8')) {
-			if(!is_object($csconv)) {
+		if (!($destEncoding === 'utf-8')) {
+			if (!is_object($csconv)) {
 				$csconv = t3lib_div::makeInstance('t3lib_cs');
 			}
 
@@ -109,8 +108,8 @@ class ext_update  {
 			$table = $queryElements[0];
 
 			$fields_values = array();
-			$queryFields = t3lib_div::trimExplode(',', $queryFields, 1);
-			foreach ($queryFields as $fieldsSet) {
+			$queryFieldsArray = preg_split('/[,]/', $queryFields, 1);
+			foreach ($queryFieldsArray as $fieldsSet) {
 				$col = t3lib_div::trimExplode('=', $fieldsSet, 1);
 				$value = stripslashes(substr($col[1], 1, strlen($col[1])-2));
 			 	$value = $csconv->conv($value, 'utf-8', $destEncoding);
@@ -130,10 +129,8 @@ class ext_update  {
 
 }
 
-// Include extension?
+// Include XCLASS?
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/static_info_tables_fr/class.ext_update.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/static_info_tables_fr/class.ext_update.php']);
 }
-
-
 ?>

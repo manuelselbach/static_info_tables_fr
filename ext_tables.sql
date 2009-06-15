@@ -16,10 +16,6 @@ CREATE TABLE static_territories (
   tr_name_fr varchar(50) DEFAULT '' NOT NULL
 );
 
-CREATE TABLE static_taxes (
-  tx_name_fr varchar(50) DEFAULT '' NOT NULL
-);
-
 CREATE TABLE static_country_zones (
   zn_name_fr varchar(50) DEFAULT '' NOT NULL
 );
