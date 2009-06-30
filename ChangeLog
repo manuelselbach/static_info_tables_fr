@@ -1,3 +1,8 @@
+2009-06-30  Francois Suter  <typo3@cobweb.ch>
+
+	* Added French names for Switzerland country zones
+	* Released to TER as version 2.0.2
+
 2009-06-15  Francois Suter  <typo3@cobweb.ch>
 
 	* Removed all references to static_taxes table
