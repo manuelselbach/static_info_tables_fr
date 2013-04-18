@@ -271,6 +271,15 @@ UPDATE static_countries SET cn_short_fr='Îles d’Åland' WHERE cn_iso_2='AX';
 UPDATE static_countries SET cn_short_fr='Île Heard et les Îles McDonald' WHERE cn_iso_2='HM';
 UPDATE static_countries SET cn_short_fr='Monténégro' WHERE cn_iso_2='ME';
 UPDATE static_countries SET cn_short_fr='Serbie' WHERE cn_iso_2='RS';
+UPDATE static_countries SET cn_short_fr='Jersey' WHERE cn_iso_2='JE';
+UPDATE static_countries SET cn_short_fr='Guernesey' WHERE cn_iso_2='GG';
+UPDATE static_countries SET cn_short_fr='Île de Man' WHERE cn_iso_2='IM';
+UPDATE static_countries SET cn_short_fr='Saint-Martin' WHERE cn_iso_2='MF';
+UPDATE static_countries SET cn_short_fr='Saint-Barthélemy' WHERE cn_iso_2='BL';
+UPDATE static_countries SET cn_short_fr='Bonaire, Saint-Eustache et Saba' WHERE cn_iso_2='BQ';
+UPDATE static_countries SET cn_short_fr='Curaçao' WHERE cn_iso_2='CW';
+UPDATE static_countries SET cn_short_fr='Saint-Martin' WHERE cn_iso_2='SX';
+UPDATE static_countries SET cn_short_fr='Soudan du Sud' WHERE cn_iso_2='SS';
 
 ## static_country_zones
 UPDATE static_country_zones SET zn_name_fr='' WHERE zn_country_iso_2='US' AND zn_code='AL';
@@ -908,6 +917,8 @@ UPDATE static_currencies SET cu_name_fr='Dinar serbe',cu_sub_name_fr='' WHERE cu
 UPDATE static_currencies SET cu_name_fr='Ariary malgache',cu_sub_name_fr='' WHERE cu_iso_3='MGA';
 UPDATE static_currencies SET cu_name_fr='Dollar surinamien',cu_sub_name_fr='' WHERE cu_iso_3='SRD';
 UPDATE static_currencies SET cu_name_fr='Nouvelle lire turque',cu_sub_name_fr='' WHERE cu_iso_3='TRY';
+UPDATE static_currencies SET cu_name_fr='Livre soudanaise',cu_sub_name_fr='' WHERE cu_iso_3='SDG';
+UPDATE static_currencies SET cu_name_fr='Livre sud-soudanaise',cu_sub_name_fr='' WHERE cu_iso_3='SSP';
 
 
 ## static_languages
@@ -1098,3 +1109,4 @@ UPDATE static_languages SET lg_name_fr='Avestique' WHERE lg_iso_2='AE' AND lg_co
 UPDATE static_languages SET lg_name_fr='Slavon' WHERE lg_iso_2='CU' AND lg_country_iso_2='';
 UPDATE static_languages SET lg_name_fr='Ido' WHERE lg_iso_2='IO' AND lg_country_iso_2='';
 UPDATE static_languages SET lg_name_fr='Pâli' WHERE lg_iso_2='PI' AND lg_country_iso_2='';
+UPDATE static_languages SET lg_name_fr='Français canadien' WHERE lg_collate_locale='fr_CA';
