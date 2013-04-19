@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Static Info Tables (fr)',
-	'description' => '(fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.',
+	'description' => 'French language pack for the Static Info Tables providing localized names for countries, currencies and so on.',
 	'category' => 'misc',
 	'shy' => 0,
 	'version' => '2.0.2',
@@ -34,9 +34,8 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'static_info_tables' => '2.0.0-',
-			'php' => '4.1.0-0.0.0',
-			'typo3' => '4.0-0.0.0',
+			'static_info_tables' => '2.0.0-0.0.0',
+			'typo3' => '4.5.0-6.1.99',
 		),
 		'conflicts' => array(
 		),
