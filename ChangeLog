@@ -1,3 +1,7 @@
+2013-06-01  Francois Suter  <typo3@cobweb.ch>
+
+	* Released to TER as version 6.0.0
+
 2013-05-31  Francois Suter  <typo3@cobweb.ch>
 
 	* Upgraded to work with static_info_tables 6.0+, resolves #48687
