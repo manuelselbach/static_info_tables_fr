@@ -33,7 +33,8 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  */
 class Language extends AbstractEntity {
 	/**
-	 * @var string French name of the language
+	 * French name of the language
+	 * @var string
 	 */
 	protected $nameFr = '';
 

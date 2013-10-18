@@ -1,3 +1,7 @@
+2013-10-18  Francois Suter  <typo3@cobweb.ch>
+
+	* Fixed variable declarations in domain models, resolves #52420
+
 2013-06-01  Francois Suter  <typo3@cobweb.ch>
 
 	* Released to TER as version 6.0.0

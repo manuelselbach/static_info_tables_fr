@@ -32,7 +32,8 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  */
 class Territory extends AbstractEntity {
 	/**
-	 * @var string French name of the territory
+	 * French name of the territory
+	 * @var string
 	 */
 	protected $nameFr = '';
 
