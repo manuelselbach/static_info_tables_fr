@@ -1262,7 +1262,8 @@ UPDATE static_languages SET lg_name_fr='Wallon' WHERE lg_iso_2='WA' AND lg_count
 UPDATE static_languages SET lg_name_fr='Brésilien' WHERE lg_iso_2='PT' AND lg_country_iso_2='BR';
 UPDATE static_languages SET lg_name_fr='Chinois (simplifié)' WHERE lg_iso_2='ZH' AND lg_country_iso_2='CN';
 UPDATE static_languages SET lg_name_fr='Français canadien' WHERE lg_iso_2='FR' AND lg_country_iso_2='CA';
-UPDATE static_languages SET lg_name_fr='' WHERE lg_iso_2='TL' AND lg_country_iso_2='PH';
+UPDATE static_languages SET lg_name_fr='Filipino' WHERE lg_iso_2='TL' AND lg_country_iso_2='PH';
+UPDATE static_languages SET lg_name_fr='Monténégrin' WHERE lg_iso_2='SR' AND lg_country_iso_2='ME';
 ## static_territories
 UPDATE static_territories SET tr_name_fr='Afrique' WHERE tr_iso_nr='2';
 UPDATE static_territories SET tr_name_fr='Océanie' WHERE tr_iso_nr='9';
