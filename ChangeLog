@@ -2,6 +2,7 @@
 
 	* Added missing language translations, resolves #59489
 	* Verified compatibility with TYPO3 CMS 6.2, resolves #59490
+	* Released to TER as version 6.0.2
 
 2013-10-23  Francois Suter  <typo3@cobweb.ch>
 
