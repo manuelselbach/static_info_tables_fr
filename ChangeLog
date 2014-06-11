@@ -1,3 +1,8 @@
+2014-06-11  Francois Suter  <typo3@cobweb.ch>
+
+	* Added missing language translations, resolves #59489
+	* Verified compatibility with TYPO3 CMS 6.2, resolves #59490
+
 2013-10-23  Francois Suter  <typo3@cobweb.ch>
 
 	* Released to TER as version 6.0.1
