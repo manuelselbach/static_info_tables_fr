@@ -2,6 +2,7 @@
 
 	* Updated to match recent versions of static_info_tables and verified compatibility with TYPO3 CMS 7, resolves #71632
 	* Cleaned up TCA extension, resolves #71350
+	* Added documentation, resolves #71637
 
 2014-06-11  Francois Suter  <typo3@cobweb.ch>
 
