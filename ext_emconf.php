@@ -13,7 +13,7 @@ $EM_CONF[$_EXTKEY] = array (
   'description' => 'French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.',
   'category' => 'misc',
   'shy' => 0,
-  'version' => '6.0.2',
+  'version' => '6.1.0',
   'priority' => '',
   'loadOrder' => '',
   'module' => '',
@@ -28,17 +28,17 @@ $EM_CONF[$_EXTKEY] = array (
   'author_company' => 'Cobweb',
   'CGLcompliance' => '',
   'CGLcompliance_note' => '',
-  'constraints' => 
+  'constraints' =>
   array (
-    'depends' => 
+    'depends' =>
     array (
-      'static_info_tables' => '6.0.2-',
-      'typo3' => '6.0.6-6.2.99',
+      'static_info_tables' => '6.3.1-0.0.0',
+      'typo3' => '6.2.0-6.2.99',
     ),
-    'conflicts' => 
+    'conflicts' =>
     array (
     ),
-    'suggests' => 
+    'suggests' =>
     array (
     ),
   ),
