@@ -1,6 +1,10 @@
 {
-  "name": "sjbr/static_info_tables_fr",
+  "name": "mselbach/static_info_tables_fr",
   "description": "French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.",
+  "keywords": [
+    "TYPO3 CMS",
+    "Static Info Tables"
+  ],
   "version": "6.1.0",
   "type": "typo3-cms-extension",
   "license": "GPL-2.0+",
@@ -11,10 +15,33 @@
     }
   ],
   "replace": {
-    "sjbr/static_info_tables_fr": "*"
+    "sjbr/static_info_tables_fr": "self.version",
+    "typo3-ter/static-info-tables-fr": "self.version"
   },
   "require": {
-    "typo3/cms-core": "6.2.0-7.9.99",
-    "sjbr/static_info_tables": "^6.3.4"
+    "php": ">=5.6",
+    "typo3/cms": ">=7.6,<9.0",
+    "sjbr/static_info_tables": "6.4.*"
+  },
+  "require-dev": {
+    "namelesscoder/typo3-repository-client": "^1.3",
+    "squizlabs/php_codesniffer": "^2.8",
+    "phpunit/phpunit": "^5.6",
+    "typo3/testing-framework": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mselbach\\StaticInfoTablesRu\\": "Classes/"
+    }
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
+    }
   }
 }
