@@ -1,42 +1,46 @@
 config.tx_extbase {
-	persistence {
-		classes {
-			SJBR\StaticInfoTables\Domain\Model\Country {
-				mapping {
-					columns {
-						cn_short_fr.mapOnProperty = shortNameFr
-					}
-				}
-			}
-			SJBR\StaticInfoTables\Domain\Model\CountryZone {
-				mapping {
-					columns {
-						zn_name_fr.mapOnProperty = nameFr
-					}
-				}
-			}
-			SJBR\StaticInfoTables\Domain\Model\Currency {
-				mapping {
-					columns {
-						cu_name_fr.mapOnProperty = nameFr
-						cu_sub_name_fr.mapOnProperty = subdivisionNameFr
-					}
-				}
-			}
-			SJBR\StaticInfoTables\Domain\Model\Language {
-				mapping {
-					columns {
-						lg_name_fr.mapOnProperty = nameFr
-					}
-				}
-			}
-			SJBR\StaticInfoTables\Domain\Model\Territory {
-				mapping {
-					columns {
-						tr_name_fr.mapOnProperty = nameFr
-					}
-				}
-			}
-		}
-	}
+    persistence {
+        classes {
+            SJBR\StaticInfoTables\Domain\Model\Country {
+                mapping {
+                    columns {
+                        cn_short_fr.mapOnProperty = shortNameFr
+                    }
+                }
+            }
+
+            SJBR\StaticInfoTables\Domain\Model\CountryZone {
+                mapping {
+                    columns {
+                        zn_name_fr.mapOnProperty = nameFr
+                    }
+                }
+            }
+
+            SJBR\StaticInfoTables\Domain\Model\Currency {
+                mapping {
+                    columns {
+                        cu_name_fr.mapOnProperty = nameFr
+                        cu_sub_name_fr.mapOnProperty = subdivisionNameFr
+                    }
+                }
+            }
+
+            SJBR\StaticInfoTables\Domain\Model\Language {
+                mapping {
+                    columns {
+                        lg_name_fr.mapOnProperty = nameFr
+                    }
+                }
+            }
+
+            SJBR\StaticInfoTables\Domain\Model\Territory {
+                mapping {
+                    columns {
+                        tr_name_fr.mapOnProperty = nameFr
+                    }
+                }
+            }
+        }
+    }
 }
