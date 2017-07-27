@@ -1,10 +1,10 @@
 <?php
-namespace SJBR\StaticInfoTablesFr;
+namespace Mselbach\StaticInfoTablesFr;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013-2015 Stanislas Rolland <typo3(arobas)sjbr.ca>
+ *  (c) 2016 Manuel Selbach (manuel_selbach@yahoo.de)
  *  All rights reserved
  *
  *  This script is part of the Typo3 project. The Typo3 project is
@@ -24,8 +24,12 @@ namespace SJBR\StaticInfoTablesFr;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Mselbach\StaticInfoTablesRu\Extension;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use SJBR\StaticInfoTables\Cache\ClassCacheManager;
+use SJBR\StaticInfoTables\Utility\DatabaseUpdateUtility;
 
 /**
  * Class for updating the db
@@ -40,28 +44,26 @@ class ext_update
     public function main()
     {
         $content = '';
-        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
-        $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         // Clear the class cache
-        /** @var \SJBR\StaticInfoTables\Cache\ClassCacheManager $classCacheManager */
-        $classCacheManager = $objectManager->get('SJBR\\StaticInfoTables\\Cache\\ClassCacheManager');
+        /** @var ClassCacheManager $classCacheManager */
+        $classCacheManager = $objectManager->get(ClassCacheManager::class);
         $classCacheManager->reBuild();
 
         // Update the database
-        /** @var \SJBR\StaticInfoTables\Utility\DatabaseUpdateUtility $databaseUpdateUtility */
-        $databaseUpdateUtility = $objectManager->get('SJBR\\StaticInfoTables\\Utility\\DatabaseUpdateUtility');
-        $databaseUpdateUtility->doUpdate('static_info_tables_fr');
+        /** @var DatabaseUpdateUtility $databaseUpdateUtility */
+        $databaseUpdateUtility = $objectManager->get(DatabaseUpdateUtility::class);
+        $databaseUpdateUtility->doUpdate(Extension::EXTENSION_KEY);
 
-        $content .= '<p>' .
-            LocalizationUtility::translate(
-                'updateLanguageLabels',
-                'StaticInfoTables'
-            )
-            . ' static_info_tables_fr.</p>';
+        $updateLanguageLabels = LocalizationUtility::translate('updateLanguageLabels', 'StaticInfoTables');
+        $content.= '<p>' . $updateLanguageLabels . ' '. Extension::EXTENSION_KEY . '</p>';
         return $content;
     }
 
+    /**
+     * @return bool
+     */
     public function access()
     {
         return true;
