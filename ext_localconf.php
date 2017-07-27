@@ -6,5 +6,5 @@ $initialize = function ($extKey) {
         '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $extKey . '/Configuration/TypoScript/Extbase/setup.txt">'
     );
 };
-$initialize(\Mselbach\StaticInfoTablesRu\Extension::EXTENSION_KEY);
+$initialize(\Mselbach\StaticInfoTablesFr\Extension::EXTENSION_KEY);
 unset($initialize);

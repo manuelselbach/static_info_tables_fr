@@ -24,7 +24,7 @@ namespace Mselbach\StaticInfoTablesFr;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Mselbach\StaticInfoTablesRu\Extension;
+use Mselbach\StaticInfoTablesFr\Extension;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
