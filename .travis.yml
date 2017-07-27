@@ -1,0 +1,65 @@
+
+language: php
+
+matrix:
+  include:
+    - php: 5.6
+      env: TYPO3_VERSION=^7.6
+    - php: 7
+      env: TYPO3_VERSION=^7.6
+    - php: 7
+      env: TYPO3_VERSION=^8.6
+    - php: 7.1
+      env: TYPO3_VERSION=^8.6
+    - php: 7
+      env: TYPO3_VERSION=dev-master
+    - php: 7.1
+      env: TYPO3_VERSION=dev-master
+  allow_failures:
+    - env: TYPO3_VERSION=dev-master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - composer --version
+
+before_script:
+  - >
+    if [ -n "$TRAVIS_TAG" ]; then
+      composer set-version $TRAVIS_TAG
+      # If this fails, we forgot to update version numbers before tagging the release
+      test -z "$(git diff --shortstat 2> /dev/null | tail -n1)";
+    fi
+  - composer require typo3/cms=$TYPO3_VERSION
+  - export TYPO3_PATH_WEB="$PWD/.Build/Web"
+
+script:
+  - >
+    echo;
+    echo "Running unit tests";
+    .Build/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
+  - >
+    echo;
+    echo "Executing PHP code sniffer";
+    .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=PSR2 Classes/
+
+after_script:
+  - >
+    echo;
+    echo "Everything done";
+  - >
+    if [ -n "$TRAVIS_TAG" ] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
+      echo -e "Preparing upload of release ${TRAVIS_TAG} to TER\n"
+      curl -sSL https://raw.githubusercontent.com/alrra/travis-after-all/1.4.4/lib/travis-after-all.js | node
+      if [ $? -eq 0 ]; then
+        # Cleanup before we upload
+        git reset --hard HEAD && git clean -fx
+        TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`
+        echo "Uploading release ${TRAVIS_TAG} to TER"
+        .Build/bin/upload . "$TYPO3_ORG_USERNAME" "$TYPO3_ORG_PASSWORD" "$TAG_MESSAGE"
+      fi;
+    fi;

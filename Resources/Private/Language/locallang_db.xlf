@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-21T01:35:44Z" product-name="static_info_tables_fr">
-		<header/>
-		<body>
-			<trans-unit id="static_territories_item.tr_name_fr" xml:space="preserve">
-				<source>Name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_countries_item.cn_official_name_fr" xml:space="preserve">
-				<source>Official name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_countries_item.cn_short_fr" xml:space="preserve">
-				<source>Short name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_country_zones_item.zn_name_fr" xml:space="preserve">
-				<source>Name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_languages_item.lg_name_fr" xml:space="preserve">
-				<source>Name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_currencies_item.cu_name_fr" xml:space="preserve">
-				<source>Name (FR):</source>
-			</trans-unit>
-			<trans-unit id="static_currencies_item.cu_sub_name_fr" xml:space="preserve">
-				<source>Sub name (FR):</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-02-21T01:35:44Z"
+          product-name="static_info_tables_fr">
+        <header/>
+        <body>
+            <trans-unit id="static_territories_item.tr_name_fr" xml:space="preserve">
+                <source>Name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_countries_item.cn_official_name_fr" xml:space="preserve">
+                <source>Official name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_countries_item.cn_short_fr" xml:space="preserve">
+                <source>Short name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_country_zones_item.zn_name_fr" xml:space="preserve">
+                <source>Name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_languages_item.lg_name_fr" xml:space="preserve">
+                <source>Name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_currencies_item.cu_name_fr" xml:space="preserve">
+                <source>Name (FR):</source>
+            </trans-unit>
+            <trans-unit id="static_currencies_item.cu_sub_name_fr" xml:space="preserve">
+                <source>Sub name (FR):</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>
