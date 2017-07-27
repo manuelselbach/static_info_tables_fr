@@ -23,25 +23,19 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables' => '',
     'clearcacheonload' => 1,
     'lockType' => '',
-    'author' => 'Francois Suter',
-    'author_email' => 'typo3@cobweb.ch',
+    'author' => 'Manuel Selbach',
+    'author_email' => 'manuel_selbach@yahoo.de',
     'author_company' => 'Cobweb',
     'CGLcompliance' => '',
     'CGLcompliance_note' => '',
-    'constraints' =>
-        [
-            'depends' =>
-                [
-                    'static_info_tables' => '6.3.4-0.0.0',
-                    'typo3' => '6.2.0-7.9.99',
-                ],
-            'conflicts' =>
-                [
-                ],
-            'suggests' =>
-                [
-                ],
+    'constraints' => [
+        'depends' => [
+            'static_info_tables' => '6.3.4-0.0.0',
+            'typo3' => '6.2.0-7.9.99',
         ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
     '_md5_values_when_last_written' => '',
     'comment' => 'Verified compatibility with TYPO3 CMS 7; updated for recent versions of static_info_tables.',
     'user' => 'francois',

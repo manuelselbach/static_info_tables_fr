@@ -33,10 +33,10 @@ Static Info Tables (fr)
 		2015
 
 	:Author:
-		Francois Suter
+		Manuel Selbach
 
 	:Email:
-		typo3@cobweb.ch
+		manuel_selbach@yahoo.de
 
 	:License:
 		This document is published under the Open Content License
