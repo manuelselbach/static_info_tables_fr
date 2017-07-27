@@ -22,8 +22,6 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-install: travis_wait mvn install
-
 before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
