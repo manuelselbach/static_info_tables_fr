@@ -57,8 +57,7 @@ class ext_update
         $databaseUpdateUtility->doUpdate(Extension::EXTENSION_KEY);
 
         $updateLanguageLabels = LocalizationUtility::translate('updateLanguageLabels', 'StaticInfoTables');
-        $content.= '<p>' . $updateLanguageLabels . ' '. Extension::EXTENSION_KEY . '</p>';
-        return $content;
+        return '<p>' . $updateLanguageLabels . ' '. Extension::EXTENSION_KEY . '</p>';
     }
 
     /**
