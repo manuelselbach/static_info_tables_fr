@@ -12,7 +12,7 @@ $EM_CONF[$_EXTKEY] = [
     'title' => 'Static Info Tables (fr)',
     'description' => 'French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.',
     'category' => 'misc',
-    'version' => '6.4.1',
+    'version' => '6.5.0',
     'state' => 'stable',
     'uploadfolder' => true,
     'createDirs' => '',
@@ -22,7 +22,7 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '7.6.0-8.7.99',
-            'static_info_tables' => '6.4.0-6.4.99',
+            'static_info_tables' => '6.5.0-6.5.99',
             'php' => '5.6.0-0.0.0',
         ],
         'conflicts' => [],
