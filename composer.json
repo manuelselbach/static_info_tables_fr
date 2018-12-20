@@ -56,7 +56,7 @@
   "scripts": {
     "post-autoload-dump": [
       "mkdir -p .Build/public/typo3conf/ext/",
-      "[ -L .Build/public/typo3conf/ext/static_info_tables_ru ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/static_info_tables_ru"
+      "[ -L .Build/public/typo3conf/ext/static_info_tables_fr ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/static_info_tables_fr"
     ],
     "extension-cleanup-for-release": [
       "rm -rf Tests/",
