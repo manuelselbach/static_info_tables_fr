@@ -1,7 +1,8 @@
 <?php
+
 namespace Mselbach\StaticInfoTablesFr\Tests\Unit\Domain\Model;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 /**
  * CountryTest
