@@ -6,7 +6,7 @@
     "Static Info Tables"
   ],
   "type": "typo3-cms-extension",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Manuel Selbach",
