@@ -24,9 +24,9 @@
     "typo3-ter/static-info-tables-fr": "self.version"
   },
   "require": {
-    "php": ">=5.5",
-    "typo3/cms-core": "^7.6 || ^8.7",
-    "sjbr/static-info-tables": "^6.5"
+    "php": ">=7.0",
+    "typo3/cms-core": "^8.7 || ^9.5",
+    "sjbr/static-info-tables": "^6.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8",

@@ -68,12 +68,8 @@ jobs:
       env: TYPO3="dev-master"
 
     - stage:
-      php: 5.5
-      env: TYPO3=^7.6
-
-    - stage:
-      php: 7
-      env: TYPO3=^7.6
+      php: 7.2
+      env: TYPO3=^9.5
 
     - stage: test
       php: 7.1
@@ -102,9 +98,9 @@ jobs:
           echo;
           echo "Uploading release ${TRAVIS_TAG} to TER";
 
-          # Cleanup before we upload
-          git reset --hard HEAD && git clean -fx
-          composer extension-cleanup-for-release
+          echo "🧹 before we upload";
+          git reset --hard HEAD && git clean -fx;
+          composer extension-cleanup-for-release;
 
           echo;
           echo;
