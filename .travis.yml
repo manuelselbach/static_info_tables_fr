@@ -1,75 +1,107 @@
 
 language: php
 
-matrix:
-  include:
-    - php: 7
-      env: TYPO3_VERSION=^8.7
-    - php: 7.1
-      env: TYPO3_VERSION=^8.7
-    - php: 7
-      env: TYPO3_VERSION=^7.6
-    - php: 5.6
-      env: TYPO3_VERSION=^7.6
-    - php: 7
-      env: TYPO3_VERSION=dev-master
-    - php: 7.1
-      env: TYPO3_VERSION=dev-master
-  allow_failures:
-    - env: TYPO3_VERSION=dev-master
-
-cache:
-  directories:
-    - $HOME/.composer/cache
+sudo: required
 
 addons:
   apt:
     packages:
       - parallel
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+jdk:
+  - oraclejdk8
+
+
 before_install:
   - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
-  - composer self-update
-  - composer --version
 
-before_script:
+install:
   - >
-    if [ -n "$TRAVIS_TAG" ]; then
-      composer set-version $TRAVIS_TAG
-      # If this fails, we forgot to update version numbers before tagging the release
-      test -z "$(git diff --shortstat 2> /dev/null | tail -n1)";
+    if [[ "$TYPO3" = *"dev"* ]]; then
+      composer config minimum-stability dev;
+      composer config prefer-stable true;
+      composer require typo3/cms-core:"@dev" --no-update;
     fi
-  - composer require typo3/cms=$TYPO3_VERSION
-  - export TYPO3_PATH_WEB="$PWD/.Build/Web"
+  - composer require nimut/typo3-complete:"$TYPO3"
+  - export TYPO3_PATH_ROOT=$PWD/.Build/public
+  - export typo3DatabaseName=typo3
+  - export typo3DatabaseHost=localhost
+  - export typo3DatabaseUsername=root
+  - export typo3DatabasePassword=
 
 script:
   - >
-    echo;
-    echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
+    if [ -d "Tests/Unit" ]; then
+      echo;
+      echo "Running unit tests";
+      echo;
+      echo;
+      .Build/bin/phpunit --bootstrap .Build/vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php Tests/Unit/;
+    fi
+
+  - >
+    if [ -d "Tests/Functional" ]; then
+      echo;
+      echo "Running functional tests";
+      echo;
+      echo;
+      find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --bootstrap .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php {}';
+    fi
+
   - >
     echo;
     echo "Executing PHP code sniffer";
     .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=PSR2 Classes/
 
-after_script:
-  - >
-    echo;
-    echo "Everything done";
-  - >
-    if [ -n "$TRAVIS_TAG" ] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
-      echo -e "Preparing upload of release ${TRAVIS_TAG} to TER\n"
-      curl -sSL https://raw.githubusercontent.com/alrra/travis-after-all/1.4.4/lib/travis-after-all.js | node
-      if [ $? -eq 0 ]; then
-        # Cleanup before we upload
-        composer require --dev typo3/cms ^8.7 --update-with-dependencies
-        composer require --dev namelesscoder/typo3-repository-client ^1.3
-        git reset --hard HEAD && git clean -fx
-        composer extension-cleanup-for-release
 
-        # Upload
-        TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`
-        echo "Uploading release ${TRAVIS_TAG} to TER"
-        .Build/bin/upload . "$TYPO3_ORG_USERNAME" "$TYPO3_ORG_PASSWORD" "$TAG_MESSAGE"
-      fi;
-    fi;
+jobs:
+  fast_finish: true
+  allow_failures:
+    - env: TYPO3="dev-master"
+  include:
+    - stage: test
+      php: 7.2
+      env: TYPO3="dev-master"
+
+    - stage:
+      php: 7.2
+      env: TYPO3=^9.5
+
+    - stage: test
+      php: 7.1
+      env: TYPO3=^8.7
+
+    - stage: test
+      php: 7.0
+      env: TYPO3=^8.7
+
+    - stage: 🚢 to ter
+      if: tag IS present AND env(TYPO3_ORG_USERNAME) IS present AND env(TYPO3_ORG_PASSWORD) IS present
+      php: 7.0
+      before_install: skip
+      install: skip
+      before_script: skip
+      script:
+        - >
+          echo;
+          echo "Preparing upload of release ${TRAVIS_TAG} to TER";
+          echo;
+          echo;
+          composer global require helhum/ter-client;
+
+        - >
+          TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`;
+          echo;
+          echo "Uploading release ${TRAVIS_TAG} to TER";
+
+          echo "🧹 before we upload";
+          git reset --hard HEAD && git clean -fx;
+          composer extension-cleanup-for-release;
+
+          echo;
+          echo;
+          $HOME/.composer/vendor/bin/ter-client upload $EXTENSION_KEY . -u "$TYPO3_ORG_USERNAME" -p "$TYPO3_ORG_PASSWORD" -m "$TAG_MESSAGE";
