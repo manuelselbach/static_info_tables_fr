@@ -64,20 +64,40 @@ jobs:
     - env: TYPO3="dev-master"
   include:
     - stage: test
+      php: 7.4
+      env: TYPO3="dev-master"
+
+    - stage: test
+      php: 7.3
+      env: TYPO3="dev-master"
+
+    - stage: test
       php: 7.2
       env: TYPO3="dev-master"
 
-    - stage:
+    - stage: test
+      php: 7.4
+      env: TYPO3=^10.4
+
+    - stage: test
+      php: 7.3
+      env: TYPO3=^10.4
+
+    - stage: test
       php: 7.2
+      env: TYPO3=^10.4
+
+    - stage: test
+      php: 7.4
       env: TYPO3=^9.5
 
     - stage: test
-      php: 7.1
-      env: TYPO3=^8.7
+      php: 7.3
+      env: TYPO3=^9.5
 
     - stage: test
-      php: 7.0
-      env: TYPO3=^8.7
+      php: 7.2
+      env: TYPO3=^9.5
 
     - stage: 🚢 to ter
       if: tag IS present AND env(TYPO3_ORG_USERNAME) IS present AND env(TYPO3_ORG_PASSWORD) IS present
