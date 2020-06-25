@@ -119,7 +119,7 @@ jobs:
           echo "Uploading release ${TRAVIS_TAG} to TER";
 
           echo "🧹 before we upload";
-          git reset --hard HEAD && git clean -fx;
+          git clean -fx;
           composer extension-cleanup-for-release;
 
           echo;
