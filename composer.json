@@ -28,6 +28,7 @@
     "sjbr/static-info-tables": "^6.9"
   },
   "require-dev": {
+    "roave/security-advisories": "dev-latest",
     "squizlabs/php_codesniffer": "^2.8",
     "nimut/testing-framework": "2.x-dev || 3.x-dev || 4.x-dev || ^5.0",
     "phpstan/extension-installer": "^1.0",
