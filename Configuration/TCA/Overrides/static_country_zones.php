@@ -1,7 +1,10 @@
 <?php
+
+declare(strict_types=1);
+
 defined('TYPO3_MODE') || die();
 
-$initialize = function ($dataSetName) {
+(static function (string $dataSetName) {
     $additionalFields = [
         'zn_name_en' => 'zn_name_fr'
     ];
@@ -10,6 +13,4 @@ $initialize = function ($dataSetName) {
         $additionalFields,
         $dataSetName
     );
-};
-$initialize('static_country_zones');
-unset($initialize);
+})('static_country_zones');

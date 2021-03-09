@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace SJBR\StaticInfoTables\Domain\Model;
 
 /***************************************************************
@@ -36,6 +39,7 @@ class CountryZone extends AbstractEntity
 {
     /**
      * French name of the country zone
+     *
      * @var string
      */
     protected $nameFr = '';
@@ -45,7 +49,7 @@ class CountryZone extends AbstractEntity
      *
      * @return string
      */
-    public function getNameFr()
+    public function getNameFr(): string
     {
         if ($this->nameFr === '') {
             return $this->getLocalName();
@@ -53,14 +57,7 @@ class CountryZone extends AbstractEntity
         return $this->nameFr;
     }
 
-    /**
-     * Sets the French name.
-     *
-     * @param string $nameFr
-     *
-     * @return void
-     */
-    public function setNameFr($nameFr)
+    public function setNameFr(string $nameFr): void
     {
         $this->nameFr = $nameFr;
     }

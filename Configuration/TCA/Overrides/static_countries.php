@@ -1,7 +1,10 @@
 <?php
+
+declare(strict_types=1);
+
 defined('TYPO3_MODE') || die();
 
-$initialize = function ($dataSetName) {
+(static function (string $dataSetName) {
     $additionalFields = [
         'cn_short_en' => 'cn_short_fr'
     ];
@@ -10,6 +13,4 @@ $initialize = function ($dataSetName) {
         $additionalFields,
         $dataSetName
     );
-};
-$initialize('static_countries');
-unset($initialize);
+})('static_countries');
