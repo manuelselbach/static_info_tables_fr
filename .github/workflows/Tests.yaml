@@ -70,6 +70,7 @@ jobs:
           typo3DatabaseUsername: root
 
       - name: Tests for dev-master
+        continue-on-error: true
         run: |
           export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
           export "UNIT_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
