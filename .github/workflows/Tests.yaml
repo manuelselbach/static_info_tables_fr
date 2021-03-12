@@ -39,7 +39,6 @@ jobs:
         run: |
           composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
           git checkout composer.json
-          ln -nfs .Build/vendor/typo3/cms/typo3 typo3
 
       - name: Code Style
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
@@ -69,7 +68,6 @@ jobs:
           rm -rf composer.lock .Build
           composer require --dev nimut/typo3-complete:dev-master saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
           git checkout composer.json
-          ln -nfs .Build/vendor/typo3/cms/typo3 typo3
           .Build/bin/phpunit --whitelist Classes --colors -c $UNIT_XML Tests/Unit
           .Build/bin/phpunit --whitelist Classes --colors -c $FUNCTIONAL_XML Tests/Functional
         if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
