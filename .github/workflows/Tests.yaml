@@ -47,14 +47,22 @@ jobs:
       - name: Unit tests
         if: matrix.typo3 != 'dev-master'
         run: |
-          export "UNIT_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
-          .Build/bin/phpunit --whitelist Classes --coverage-clover=unittest-coverage.clover --colors -c $UNIT_XML Tests/Unit
+          if [ -d "Tests/Unit" ]; then
+            export "UNIT_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
+            .Build/bin/phpunit --whitelist Classes --coverage-clover=unittest-coverage.clover --colors -c $UNIT_XML Tests/Unit
+          else
+            echo "No unit test files."
+          fi
 
       - name: Functional / integration tests
         if: matrix.typo3 != 'dev-master'
         run: |
-          export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
-          .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional
+          if [ -d "Tests/Functional" ]; then
+            export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
+            .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional
+          else
+            echo "No functional test files."
+          fi
         env:
           typo3DatabaseHost: 127.0.0.1
           typo3DatabaseName: typo3
