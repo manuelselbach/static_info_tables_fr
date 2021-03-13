@@ -13,6 +13,8 @@
   "description": "French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.",
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "authors": [
     {
       "name": "Manuel Selbach",
