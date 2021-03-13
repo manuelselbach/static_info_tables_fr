@@ -40,8 +40,8 @@ jobs:
           composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
           git checkout composer.json
 
-      - name: Install dependencies with nimut/typo3-complete:dev-master
-        if: matrix.typo3 == 'dev-master'
+      - name: Install dependencies with nimut/typo3-complete:dev-master and PHP == 7.4
+        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
         run: |
           rm -rf composer.lock .Build
           composer require --dev --no-progress nimut/typo3-complete:dev-master saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
@@ -75,14 +75,14 @@ jobs:
           typo3DatabasePassword: root
           typo3DatabaseUsername: root
 
-      - name: Tests for dev-master
+      - name: Tests for dev-master and PHP == 7.4
+        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
         continue-on-error: true
         run: |
           export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
           export "UNIT_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
           .Build/bin/phpunit --whitelist Classes --colors -c $UNIT_XML Tests/Unit
           .Build/bin/phpunit --whitelist Classes --colors -c $FUNCTIONAL_XML Tests/Functional
-        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
         env:
           typo3DatabaseHost: 127.0.0.1
           typo3DatabaseName: typo3
