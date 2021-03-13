@@ -30,7 +30,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v2
-          coverage: none # disable xdebug, pcov
 
       - name: Validate composer.json and composer.lock
         run: composer validate
