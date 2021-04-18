@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace SJBR\StaticInfoTables\Domain\Model;
 
 /***************************************************************
@@ -36,6 +39,7 @@ class Country extends AbstractEntity
 {
     /**
      * The French short name
+     *
      * @var string
      */
     protected $shortNameFr = '';

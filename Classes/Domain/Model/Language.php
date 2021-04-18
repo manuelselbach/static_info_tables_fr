@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace SJBR\StaticInfoTables\Domain\Model;
 
 /***************************************************************
@@ -36,6 +39,7 @@ class Language extends AbstractEntity
 {
     /**
      * French name of the language
+     *
      * @var string
      */
     protected $nameFr = '';
@@ -45,7 +49,7 @@ class Language extends AbstractEntity
      *
      * @return string
      */
-    public function getNameFr()
+    public function getNameFr(): string
     {
         return $this->nameFr;
     }
@@ -53,11 +57,11 @@ class Language extends AbstractEntity
     /**
      * Sets the French name of the language
      *
-     * @param string $nameFrench
+     * @param string $nameFr
      *
      * @return void
      */
-    public function setNameFr($nameFr)
+    public function setNameFr(string $nameFr): void
     {
         $this->nameFr = $nameFr;
     }

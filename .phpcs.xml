@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="PHPCS Coding Standards">
+    <arg name="basepath" value="."/>
+    <arg name="extensions" value="php"/>
+    <arg name="colors" />
+
+    <!-- Show progress of the run -->
+    <arg value="p"/>
+
+    <rule ref="PSR12"/>
+
+    <file>Classes</file>
+    <file>Configuration</file>
+    <file>Tests</file>
+</ruleset>
