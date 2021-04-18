@@ -42,13 +42,19 @@ jobs:
 
       - name: Install dependencies with nimut/typo3-complete:dev-master and PHP == 7.4
         if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
+        continue-on-error: true
         run: |
           rm -rf composer.lock .Build
           composer require --dev --no-progress nimut/typo3-complete:dev-master saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
           git checkout composer.json
 
       - name: Code Style
-        if: (matrix.typo3 != 'dev-master') || (matrix.typo3 == 'dev-master' && matrix.php == '7.4')
+        if: matrix.typo3 != 'dev-master'
+        run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
+
+      - name: Code Style for dev-master and PHP == 7.4
+        continue-on-error: true
+        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
 
       - name: Unit tests
