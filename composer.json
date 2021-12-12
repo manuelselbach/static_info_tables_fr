@@ -25,14 +25,14 @@
     "mselbach/static-info-tables-fr": "self.version"
   },
   "require": {
-    "php": ">=7.2",
-    "typo3/cms-core": "^9.5 || ^10.4 || ^11.0 || dev-master",
-    "sjbr/static-info-tables": "^6.9"
+    "php": ">=7.4",
+    "typo3/cms-core": "^11.5 || dev-master",
+    "sjbr/static-info-tables": "^11.5"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "squizlabs/php_codesniffer": "^3.5",
-    "nimut/testing-framework": "2.x-dev || 3.x-dev || 4.x-dev || ^5.0",
+    "nimut/testing-framework": "^6.0",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^0.12.67",
     "phpstan/phpstan-deprecation-rules": "^0.12.5",

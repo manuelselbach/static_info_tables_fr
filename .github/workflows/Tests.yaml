@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ '7.2', '7.3', '7.4' ]
-        typo3: [ '^9.5', '^10.4', 'dev-master' ]
+        php: [ '7.4' ]
+        typo3: [ '^11.5', 'dev-master' ]
 
     name: PHP ${{ matrix.php }}, TYPO3 ${{ matrix.typo3 }} tests
     steps:
