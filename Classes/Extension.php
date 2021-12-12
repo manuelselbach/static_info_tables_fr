@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mselbach\StaticInfoTablesFr;
 
 /***************************************************************
@@ -30,8 +32,5 @@ namespace Mselbach\StaticInfoTablesFr;
 
 class Extension
 {
-    /**
-     * @var string The extension key
-     */
-    const EXTENSION_KEY = 'static_info_tables_fr';
+    public const EXTENSION_KEY = 'static_info_tables_fr';
 }

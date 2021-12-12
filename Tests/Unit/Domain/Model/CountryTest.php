@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mselbach\StaticInfoTablesFr\Tests\Unit\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * CountryTest
- */
 class CountryTest extends UnitTestCase
 {
     /**
      * @test
      */
-    public function testDummy()
+    public function testDummy(): void
     {
     }
 }

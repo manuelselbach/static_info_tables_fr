@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace SJBR\StaticInfoTables\Domain\Model;
 
 /***************************************************************
@@ -36,12 +39,14 @@ class Currency extends AbstractEntity
 {
     /**
      * French name of the currency
+     *
      * @var string
      */
     protected $nameFr = '';
 
     /**
      * French name of the currency subdivision unit
+     *
      * @var string
      */
     protected $subdivisionNameFr = '';
