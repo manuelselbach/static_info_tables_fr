@@ -29,6 +29,10 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
+
+      - name: Allow composer plugin typo3/cms-composer-installers
+        run: composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+
       - run: composer install --no-progress
       - run: composer analyse
 
