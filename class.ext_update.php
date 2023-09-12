@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Mselbach\StaticInfoTablesFr;
 
 /***************************************************************
@@ -24,12 +27,10 @@ namespace Mselbach\StaticInfoTablesFr;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Mselbach\StaticInfoTablesFr\Extension;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use SJBR\StaticInfoTables\Cache\ClassCacheManager;
 use SJBR\StaticInfoTables\Utility\DatabaseUpdateUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class for updating the db
@@ -44,20 +45,19 @@ class ext_update
     public function main()
     {
         $content = '';
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         // Clear the class cache
         /** @var ClassCacheManager $classCacheManager */
-        $classCacheManager = $objectManager->get(ClassCacheManager::class);
+        $classCacheManager = GeneralUtility::makeInstance(ClassCacheManager::class);
         $classCacheManager->reBuild();
 
         // Update the database
         /** @var DatabaseUpdateUtility $databaseUpdateUtility */
-        $databaseUpdateUtility = $objectManager->get(DatabaseUpdateUtility::class);
+        $databaseUpdateUtility = GeneralUtility::makeInstance(DatabaseUpdateUtility::class);
         $databaseUpdateUtility->doUpdate(Extension::EXTENSION_KEY);
 
         $updateLanguageLabels = LocalizationUtility::translate('updateLanguageLabels', 'StaticInfoTables');
-        return '<p>' . $updateLanguageLabels . ' '. Extension::EXTENSION_KEY . '</p>';
+        return '<p>' . $updateLanguageLabels . ' ' . Extension::EXTENSION_KEY . '</p>';
     }
 
     /**
