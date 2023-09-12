@@ -40,6 +40,9 @@ jobs:
       - name: Allow composer plugin typo3/class-alias-loader
         run: composer config --no-plugins allow-plugins.typo3/class-alias-loader true
 
+      - name: Allow composer plugin phpstan/extension-installer
+        run: composer config --no-plugins allow-plugins.phpstan/extension-installer true
+
       - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
         if: matrix.typo3 != 'dev-master'
         run: |
