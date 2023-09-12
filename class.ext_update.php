@@ -42,7 +42,7 @@ class ext_update
      *
      * @return string HTML
      */
-    public function main()
+    public function main(): string
     {
         $content = '';
 
@@ -63,7 +63,7 @@ class ext_update
     /**
      * @return bool
      */
-    public function access()
+    public function access(): bool
     {
         return true;
     }
