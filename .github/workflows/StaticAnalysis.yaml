@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '7.4' ]
+        php: [ '8.1' ]
     name: PHPstan
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +47,11 @@ jobs:
             ${{ runner.os }}-composer-
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           coverage: none
+
+      - name: Allow composer plugin typo3/cms-composer-installers
+        run: composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+
       - run: composer install --no-progress
       - run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true

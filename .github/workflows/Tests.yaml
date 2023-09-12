@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ '7.4' ]
-        typo3: [ '^11.5', 'dev-master' ]
+        php: [ '8.1' ]
+        typo3: [ '^12.4', 'dev-master' ]
 
     name: PHP ${{ matrix.php }}, TYPO3 ${{ matrix.typo3 }} tests
     steps:
@@ -34,14 +34,17 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
+      - name: Allow composer plugin typo3/cms-composer-installers
+        run: composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+
       - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
         if: matrix.typo3 != 'dev-master'
         run: |
           composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
           git checkout composer.json
 
-      - name: Install dependencies with nimut/typo3-complete:dev-master and PHP == 7.4
-        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
+      - name: Install dependencies with nimut/typo3-complete:dev-master and PHP == 8.1
+        if: matrix.typo3 == 'dev-master' && matrix.php == '8.1'
         continue-on-error: true
         run: |
           rm -rf composer.lock .Build
@@ -52,9 +55,9 @@ jobs:
         if: matrix.typo3 != 'dev-master'
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
 
-      - name: Code Style for dev-master and PHP == 7.4
+      - name: Code Style for dev-master and PHP == 8.1
         continue-on-error: true
-        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
+        if: matrix.typo3 == 'dev-master' && matrix.php == '8.1'
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
 
       - name: Unit tests
@@ -82,8 +85,8 @@ jobs:
           typo3DatabasePassword: root
           typo3DatabaseUsername: root
 
-      - name: Tests for dev-master and PHP == 7.4
-        if: matrix.typo3 == 'dev-master' && matrix.php == '7.4'
+      - name: Tests for dev-master and PHP == 8.1
+        if: matrix.typo3 == 'dev-master' && matrix.php == '8.1'
         continue-on-error: true
         run: |
           export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
