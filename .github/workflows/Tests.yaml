@@ -67,13 +67,13 @@ jobs:
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
 
       - name: Unit tests
-        run: .Build/Scripts/runTests.sh -p ${{ matrix.php }} -s unit
+        run: .Build/vendor/typo3/testing-framework/Build/Scripts/runTests.sh -p ${{ matrix.php }} -s unit
 
       - name: Functional tests with mariadb
-        run: .Build/Scripts/runTests.sh -p ${{ matrix.php }} -d mariadb -s functional
+        run: .Build/vendor/typo3/testing-framework/Build/Scripts/runTests.sh -p ${{ matrix.php }} -d mariadb -s functional
 
       - name: Functional tests with postgres
-        run: .Build/Scripts/runTests.sh -p ${{ matrix.php }} -d postgres -s functional
+        run: .Build/vendor/typo3/testing-framework/Build/Scripts/runTests.sh -p ${{ matrix.php }} -d postgres -s functional
 
       - name: Functional tests with sqlite
-        run: .Build/Scripts/runTests.sh -p ${{ matrix.php }} -d sqlite -s functional
+        run: .Build/vendor/typo3/testing-framework/Build/Scripts/runTests.sh -p ${{ matrix.php }} -d sqlite -s functional
