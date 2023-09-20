@@ -30,15 +30,6 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - name: Allow composer plugin typo3/cms-composer-installers
-        run: composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
-
-      - name: Allow composer plugin typo3/class-alias-loader
-        run: composer config --no-plugins allow-plugins.typo3/class-alias-loader true
-
-      - name: Allow composer plugin phpstan/extension-installer
-        run: composer config --no-plugins allow-plugins.phpstan/extension-installer true
-
       - run: composer install --no-progress
       - run: composer analyse
 
@@ -59,15 +50,6 @@ jobs:
         with:
           php-version: 8.1
           coverage: none
-
-      - name: Allow composer plugin typo3/cms-composer-installers
-        run: composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
-
-      - name: Allow composer plugin typo3/class-alias-loader
-        run: composer config --no-plugins allow-plugins.typo3/class-alias-loader true
-
-      - name: Allow composer plugin phpstan/extension-installer
-        run: composer config --no-plugins allow-plugins.phpstan/extension-installer true
 
       - run: composer install --no-progress
       - run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
