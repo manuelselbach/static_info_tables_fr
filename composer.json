@@ -26,7 +26,7 @@
   },
   "require": {
     "php": "^8.1",
-    "typo3/cms-core": "^12.4 || dev-master",
+    "typo3/cms-core": "^12.4 || dev-main",
     "sjbr/static-info-tables": "^11.5 || dev-master"
   },
   "require-dev": {
