@@ -19,8 +19,6 @@ jobs:
 
     name: PHP ${{ matrix.php }}, TYPO3 ${{ matrix.typo3 }} tests
     steps:
-      - name: Start database server
-        run: sudo /etc/init.d/mysql start
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -69,40 +67,13 @@ jobs:
         run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true
 
       - name: Unit tests
-        if: matrix.typo3 != 'dev-main'
-        run: |
-          if [ -d "Tests/Unit" ]; then
-            export "UNIT_XML"=.Build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml
-            .Build/bin/phpunit Classes --coverage-clover=unittest-coverage.clover --colors -c $UNIT_XML Tests/Unit
-          else
-            echo "No unit test files."
-          fi
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s unit
 
-      - name: Functional / integration tests
-        if: matrix.typo3 != 'dev-main'
-        run: |
-          if [ -d "Tests/Functional" ]; then
-            export "FUNCTIONAL_XML"=.Build/vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTests.xml
-            .Build/bin/phpunit Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional
-          else
-            echo "No functional test files."
-          fi
-        env:
-          typo3DatabaseHost: 127.0.0.1
-          typo3DatabaseName: typo3
-          typo3DatabasePassword: root
-          typo3DatabaseUsername: root
+      - name: Functional tests with mariadb
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -d mariadb -s functional
 
-      - name: Tests for dev-main and PHP == 8.1
-        if: matrix.typo3 == 'dev-main' && matrix.php == '8.1'
-        continue-on-error: true
-        run: |
-          export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
-          export "UNIT_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
-          .Build/bin/phpunit Classes --colors -c $UNIT_XML Tests/Unit
-          .Build/bin/phpunit Classes --colors -c $FUNCTIONAL_XML Tests/Functional
-        env:
-          typo3DatabaseHost: 127.0.0.1
-          typo3DatabaseName: typo3
-          typo3DatabasePassword: root
-          typo3DatabaseUsername: root
+      - name: Functional tests with postgres
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -d postgres -s functional
+
+      - name: Functional tests with sqlite
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -d sqlite -s functional
