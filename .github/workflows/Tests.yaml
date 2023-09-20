@@ -46,7 +46,8 @@ jobs:
       - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
         if: matrix.typo3 != 'dev-main'
         run: |
-          composer require --dev nimut/typo3-complete:"12.0.x-dev" --no-progress
+          composer require --no-progress "typo3/cms-adminpanel:${{ matrix.typo3 }}" "typo3/cms-backend:${{ matrix.typo3 }}" "typo3/cms-belog:${{ matrix.typo3 }}" "typo3/cms-beuser:${{ matrix.typo3 }}" "typo3/cms-core:${{ matrix.typo3 }}" "typo3/cms-dashboard:${{ matrix.typo3 }}" "typo3/cms-extbase:${{ matrix.typo3 }}" "typo3/cms-extensionmanager:${{ matrix.typo3 }}" "typo3/cms-felogin:${{ matrix.typo3 }}" "typo3/cms-filelist:${{ matrix.typo3 }}" "typo3/cms-filemetadata:${{ matrix.typo3 }}" "typo3/cms-fluid:${{ matrix.typo3 }}" "typo3/cms-fluid-styled-content:${{ matrix.typo3 }}" "typo3/cms-form:${{ matrix.typo3 }}" "typo3/cms-frontend:${{ matrix.typo3 }}" "typo3/cms-impexp:${{ matrix.typo3 }}" "typo3/cms-indexed-search:${{ matrix.typo3 }}" "typo3/cms-info:${{ matrix.typo3 }}" "typo3/cms-install:${{ matrix.typo3 }}" "typo3/cms-linkvalidator:${{ matrix.typo3 }}" "typo3/cms-lowlevel:${{ matrix.typo3 }}" "typo3/cms-opendocs:${{ matrix.typo3 }}" "typo3/cms-reactions:${{ matrix.typo3 }}" "typo3/cms-recycler:${{ matrix.typo3 }}" "typo3/cms-redirects:${{ matrix.typo3 }}" "typo3/cms-reports:${{ matrix.typo3 }}" "typo3/cms-rte-ckeditor:${{ matrix.typo3 }}" "typo3/cms-scheduler:${{ matrix.typo3 }}" "typo3/cms-seo:${{ matrix.typo3 }}" "typo3/cms-setup:${{ matrix.typo3 }}" "typo3/cms-sys-note:${{ matrix.typo3 }}" "typo3/cms-t3editor:${{ matrix.typo3 }}" "typo3/cms-tstemplate:${{ matrix.typo3 }}" "typo3/cms-viewpage:${{ matrix.typo3 }}" "typo3/cms-webhooks:${{ matrix.typo3 }}" "typo3/cms-workspaces:${{ matrix.typo3 }}" "typo3/minimal:^12"
+          
           git checkout composer.json
 
       - name: Install dependencies with nimut/typo3-complete:dev-main and PHP == 8.1
@@ -54,7 +55,8 @@ jobs:
         continue-on-error: true
         run: |
           rm -rf composer.lock .Build
-          composer require --dev --no-progress nimut/typo3-complete:dev-main saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
+          composer require --no-progress "typo3/cms-adminpanel:${{ matrix.typo3 }}" "typo3/cms-backend:${{ matrix.typo3 }}" "typo3/cms-belog:${{ matrix.typo3 }}" "typo3/cms-beuser:${{ matrix.typo3 }}" "typo3/cms-core:${{ matrix.typo3 }}" "typo3/cms-dashboard:${{ matrix.typo3 }}" "typo3/cms-extbase:${{ matrix.typo3 }}" "typo3/cms-extensionmanager:${{ matrix.typo3 }}" "typo3/cms-felogin:${{ matrix.typo3 }}" "typo3/cms-filelist:${{ matrix.typo3 }}" "typo3/cms-filemetadata:${{ matrix.typo3 }}" "typo3/cms-fluid:${{ matrix.typo3 }}" "typo3/cms-fluid-styled-content:${{ matrix.typo3 }}" "typo3/cms-form:${{ matrix.typo3 }}" "typo3/cms-frontend:${{ matrix.typo3 }}" "typo3/cms-impexp:${{ matrix.typo3 }}" "typo3/cms-indexed-search:${{ matrix.typo3 }}" "typo3/cms-info:${{ matrix.typo3 }}" "typo3/cms-install:${{ matrix.typo3 }}" "typo3/cms-linkvalidator:${{ matrix.typo3 }}" "typo3/cms-lowlevel:${{ matrix.typo3 }}" "typo3/cms-opendocs:${{ matrix.typo3 }}" "typo3/cms-reactions:${{ matrix.typo3 }}" "typo3/cms-recycler:${{ matrix.typo3 }}" "typo3/cms-redirects:${{ matrix.typo3 }}" "typo3/cms-reports:${{ matrix.typo3 }}" "typo3/cms-rte-ckeditor:${{ matrix.typo3 }}" "typo3/cms-scheduler:${{ matrix.typo3 }}" "typo3/cms-seo:${{ matrix.typo3 }}" "typo3/cms-setup:${{ matrix.typo3 }}" "typo3/cms-sys-note:${{ matrix.typo3 }}" "typo3/cms-t3editor:${{ matrix.typo3 }}" "typo3/cms-tstemplate:${{ matrix.typo3 }}" "typo3/cms-viewpage:${{ matrix.typo3 }}" "typo3/cms-webhooks:${{ matrix.typo3 }}" "typo3/cms-workspaces:${{ matrix.typo3 }}" "typo3/minimal:${{ matrix.typo3 }}"
+          composer require --dev --no-progress saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
           git checkout composer.json
 
       - name: Code Style
