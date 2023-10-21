@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mselbach\StaticInfoTablesFr\Tests\Unit\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class CountryTest extends UnitTestCase
 {

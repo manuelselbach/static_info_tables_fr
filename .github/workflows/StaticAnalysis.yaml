@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '7.4' ]
+        php: [ '8.1' ]
     name: PHPstan
     steps:
       - uses: actions/checkout@v2
@@ -29,6 +29,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
+
       - run: composer install --no-progress
       - run: composer analyse
 
@@ -47,7 +48,8 @@ jobs:
             ${{ runner.os }}-composer-
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           coverage: none
+
       - run: composer install --no-progress
       - run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true

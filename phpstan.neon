@@ -8,26 +8,6 @@ parameters:
 
     ignoreErrors:
         -
-            message: "#^Right side of || is always false\\.$#"
-            count: 1
-            path: Configuration/TCA/Overrides/static_countries.php
-        -
-            message: "#^Right side of || is always false\\.$#"
-            count: 1
-            path: Configuration/TCA/Overrides/static_country_zones.php
-        -
-            message: "#^Right side of || is always false\\.$#"
-            count: 1
-            path: Configuration/TCA/Overrides/static_currencies.php
-        -
-            message: "#^Right side of || is always false\\.$#"
-            count: 1
-            path: Configuration/TCA/Overrides/static_languages.php
-        -
-            message: "#^Right side of || is always false\\.$#"
-            count: 1
-            path: Configuration/TCA/Overrides/static_territories.php
-        -
             message: "#^Call to an undefined method SJBR\\\\StaticInfoTables\\\\Domain\\\\Model\\\\CountryZone::getLocalName\\(\\)\\.$#"
             count: 1
             path: Classes/Domain/Model/CountryZone.php

@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-defined('TYPO3_MODE') || die();
-
 (static function (string $dataSetName) {
     $additionalFields = [
         'cu_name_en' => 'cu_name_fr',
