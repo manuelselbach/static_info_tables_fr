@@ -13,8 +13,8 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'manuel_selbach@yahoo.de',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-12.4.99',
-            'static_info_tables' => '12.4.0-12.4.99',
+            'typo3' => '12.4.0-13.4.99',
+            'static_info_tables' => '12.4.0-13.4.99',
             'php' => '8.1.0-0.0.0',
         ],
         'conflicts' => [],
