@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined method SJBR\\StaticInfoTables\\Domain\\Model\\CountryZone\:\:getLocalName\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: ../../Classes/Domain/Model/CountryZone.php

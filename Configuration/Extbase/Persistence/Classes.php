@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
+use SJBR\StaticInfoTables\Domain\Model\Country;
+use SJBR\StaticInfoTables\Domain\Model\CountryZone;
+use SJBR\StaticInfoTables\Domain\Model\Currency;
+use SJBR\StaticInfoTables\Domain\Model\Language;
+use SJBR\StaticInfoTables\Domain\Model\Territory;
+
 return [
-    \SJBR\StaticInfoTables\Domain\Model\Country::class => [
+    Country::class => [
         'tableName' => 'static_countries',
         'properties' => [
             'shortNameFr' => [
@@ -11,7 +17,7 @@ return [
             ],
         ],
     ],
-    \SJBR\StaticInfoTables\Domain\Model\CountryZone::class => [
+    CountryZone::class => [
         'tableName' => 'static_country_zones',
         'properties' => [
             'nameFr' => [
@@ -19,7 +25,7 @@ return [
             ],
         ],
     ],
-    \SJBR\StaticInfoTables\Domain\Model\Currency::class => [
+    Currency::class => [
         'tableName' => 'static_currencies',
         'properties' => [
             'nameFr' => [
@@ -30,7 +36,7 @@ return [
             ],
         ],
     ],
-    \SJBR\StaticInfoTables\Domain\Model\Language::class => [
+    Language::class => [
         'tableName' => 'static_languages',
         'properties' => [
             'nameFr' => [
@@ -38,7 +44,7 @@ return [
             ],
         ],
     ],
-    \SJBR\StaticInfoTables\Domain\Model\Territory::class => [
+    Territory::class => [
         'tableName' => 'static_territories',
         'properties' => [
             'nameFr' => [

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SJBR\StaticInfoTables\Domain\Model;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2011-2012 Armin Rüdiger Vieweg <info@professorweb.de>
@@ -27,7 +27,7 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 /**
  * The Currency model
@@ -39,58 +39,42 @@ class Currency extends AbstractEntity
 {
     /**
      * French name of the currency
-     *
-     * @var string
      */
-    protected $nameFr = '';
+    protected string $nameFr = '';
 
     /**
      * French name of the currency subdivision unit
-     *
-     * @var string
      */
-    protected $subdivisionNameFr = '';
+    protected string $subdivisionNameFr = '';
 
     /**
      * Gets the French name of the currency
-     *
-     * @return string
      */
-    public function getNameFr()
+    public function getNameFr(): string
     {
         return $this->nameFr;
     }
 
     /**
      * Sets the French name of the currency
-     *
-     * @param string $nameFr
-     *
-     * @return void
      */
-    public function setNameFr($nameFr)
+    public function setNameFr(string $nameFr): void
     {
         $this->nameFr = $nameFr;
     }
 
     /**
      * Gets the French name of the currency subdivision
-     *
-     * @return string
      */
-    public function getSubdivisionNameFr()
+    public function getSubdivisionNameFr(): string
     {
         return $this->subdivisionNameFr;
     }
 
     /**
      * Sets the French name of the currency subdivision
-     *
-     * @param string $subdivisionNameFr
-     *
-     * @return void
      */
-    public function setSubdivisionNameFr($subdivisionNameFr)
+    public function setSubdivisionNameFr(string $subdivisionNameFr): void
     {
         $this->subdivisionNameFr = $subdivisionNameFr;
     }

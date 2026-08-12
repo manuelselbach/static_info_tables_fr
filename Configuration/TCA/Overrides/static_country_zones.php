@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-(static function (string $dataSetName) {
+use Mselbach\StaticInfoTablesFr\Provider\TcaProvider;
+
+(static function (string $dataSetName): void {
     $additionalFields = [
-        'zn_name_en' => 'zn_name_fr'
+        'zn_name_en' => 'zn_name_fr',
     ];
 
-    \Mselbach\StaticInfoTablesFr\Provider\TcaProvider::generateAndRegisterTca(
+    TcaProvider::generateAndRegisterTca(
         $additionalFields,
         $dataSetName
     );

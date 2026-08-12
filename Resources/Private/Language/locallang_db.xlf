@@ -4,25 +4,25 @@
           product-name="static_info_tables_fr">
         <header/>
         <body>
-            <trans-unit id="static_territories_item.tr_name_fr" xml:space="preserve">
+            <trans-unit id="static_territories_item.tr_name_fr">
                 <source>Name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_countries_item.cn_official_name_fr" xml:space="preserve">
+            <trans-unit id="static_countries_item.cn_official_name_fr">
                 <source>Official name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_countries_item.cn_short_fr" xml:space="preserve">
+            <trans-unit id="static_countries_item.cn_short_fr">
                 <source>Short name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_country_zones_item.zn_name_fr" xml:space="preserve">
+            <trans-unit id="static_country_zones_item.zn_name_fr">
                 <source>Name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_languages_item.lg_name_fr" xml:space="preserve">
+            <trans-unit id="static_languages_item.lg_name_fr">
                 <source>Name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_currencies_item.cu_name_fr" xml:space="preserve">
+            <trans-unit id="static_currencies_item.cu_name_fr">
                 <source>Name (FR):</source>
             </trans-unit>
-            <trans-unit id="static_currencies_item.cu_sub_name_fr" xml:space="preserve">
+            <trans-unit id="static_currencies_item.cu_sub_name_fr">
                 <source>Sub name (FR):</source>
             </trans-unit>
         </body>

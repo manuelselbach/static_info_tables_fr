@@ -1,0 +1,78 @@
+name: CI with Composer scripts
+on:
+  push:
+    paths:
+      - '**.php'
+      - '.github/workflows/ci.yaml'
+      - 'composer.json'
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.2, 8.3, 8.4, 8.5]
+
+    name: "PHP linter - ${{ matrix.php }}"
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php }}"
+          coverage: none
+
+      - name: "Run PHP lint"
+        run: find .*.php *.php Classes Configuration Tests -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l
+
+  code-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: true
+      matrix:
+        command:
+          - "composer:normalize"
+          - "composer:psr-verify"
+          - "php:ecs"
+          - "php:rector"
+          - "php:stan"
+        # This must be the lowest supported PHP version only!
+        php: [8.2]
+
+    name: "Code quality checks"
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php }}"
+          coverage: none
+          tools: composer:v2
+
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v6
+        with:
+          key: "php${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
+          path: ~/.cache/composer
+          restore-keys: "php${{ matrix.php }}-composer-\n"
+
+      - name: "Install Composer dependencies"
+        run: composer install --no-progress
+
+      - name: "Run command"
+        run: composer ci:${{ matrix.command }}

@@ -1,4 +1,3 @@
-
 CREATE TABLE static_countries (
   cn_short_fr varchar(50) DEFAULT '' NOT NULL
 );
@@ -19,4 +18,3 @@ CREATE TABLE static_territories (
 CREATE TABLE static_country_zones (
   zn_name_fr varchar(50) DEFAULT '' NOT NULL
 );
-

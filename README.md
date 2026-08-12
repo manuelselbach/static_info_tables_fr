@@ -4,5 +4,5 @@
 
 **develop** [![Build Status](https://travis-ci.org/manuelselbach/static_info_tables_fr.svg?branch=develop)](https://travis-ci.org/manuelselbach/static_info_tables_fr)
 
-This extension provides french language pack for the static info tables 
+This extension provides French language pack for the static info tables
 providing localized names for countries, zones, currencies and so on.
