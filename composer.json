@@ -15,7 +15,7 @@
 	],
 	"require": {
 		"php": "^8.2",
-		"sjbr/static-info-tables": "^13.4 || dev-master",
+		"sjbr/static-info-tables": "^14.3 || dev-master",
 		"typo3/cms-core": "^14.3 || dev-main"
 	},
 	"require-dev": {
