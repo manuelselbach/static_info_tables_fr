@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SJBR\StaticInfoTables\Domain\Model;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2011-2012 Armin Rüdiger Vieweg <info@professorweb.de>
@@ -27,7 +27,7 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 /**
  * The Country Zone model
@@ -39,15 +39,11 @@ class CountryZone extends AbstractEntity
 {
     /**
      * French name of the country zone
-     *
-     * @var string
      */
-    protected $nameFr = '';
+    protected string $nameFr = '';
 
     /**
      * Returns French name. If empty returns the localName.
-     *
-     * @return string
      */
     public function getNameFr(): string
     {

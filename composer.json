@@ -1,84 +1,84 @@
 {
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://composer.typo3.org"
-    }
-  ],
-  "keywords": [
-    "TYPO3 CMS",
-    "Static Info Tables"
-  ],
-  "name": "mselbach/static-info-tables-fr",
-  "description": "French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.",
-  "type": "typo3-cms-extension",
-  "license": "GPL-2.0-or-later",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "authors": [
-    {
-      "name": "Manuel Selbach",
-      "role": "Developer"
-    }
-  ],
-  "replace": {
-    "typo3-ter/static-info-tables-fr": "self.version"
-  },
-  "require": {
-    "php": "^8.1",
-    "typo3/cms-core": "^13.4 || dev-main",
-    "sjbr/static-info-tables": "^13.4 || dev-master"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-latest",
-    "squizlabs/php_codesniffer": "^3.5",
-    "typo3/testing-framework": "^8.0",
-    "phpstan/extension-installer": "^1.0",
-    "phpstan/phpstan": "^1.8",
-    "phpstan/phpstan-deprecation-rules": "^1.1",
-    "saschaegerer/phpstan-typo3": "^1.9"
-  },
-  "autoload": {
-    "psr-4": {
-      "Mselbach\\StaticInfoTablesFr\\": "Classes/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Mselbach\\StaticInfoTablesFr\\Tests\\": "Tests"
-    }
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin",
-    "allow-plugins": {
-      "typo3/cms-composer-installers": true,
-      "typo3/class-alias-loader": true,
-      "phpstan/extension-installer": true
-    }
-  },
-  "extra": {
-    "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "extension-key": "static_info_tables_fr",
-      "app-dir": ".Build",
-      "web-dir": ".Build/public"
-    }
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/public/typo3conf/ext/",
-      "[ -L .Build/public/typo3conf/ext/static_info_tables_fr ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/static_info_tables_fr"
-    ],
-    "analyse": [
-      "[ -e .Build/bin/phpstan ] || composer update",
-      ".Build/bin/phpstan analyse"
-    ],
-    "extension-cleanup-for-release": [
-      "rm -rf Tests/",
-      "rm -f .gitignore",
-      "rm -f .travis.yml",
-      "rm -f composer.lock"
-    ]
-  }
+	"name": "mselbach/static-info-tables-fr",
+	"description": "French (fr) language pack for the Static Info Tables providing localized names for countries, currencies and so on.",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
+	"keywords": [
+		"TYPO3 CMS",
+		"Static Info Tables"
+	],
+	"authors": [
+		{
+			"name": "Manuel Selbach",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "^8.2",
+		"sjbr/static-info-tables": "^13.4 || dev-master",
+		"typo3/cms-core": "^14.3 || dev-main"
+	},
+	"require-dev": {
+		"ergebnis/composer-normalize": "^2.52",
+		"phpstan/extension-installer": "^1.0",
+		"phpstan/phpstan": "^2.0",
+		"phpstan/phpstan-deprecation-rules": "^2.0",
+		"roave/security-advisories": "dev-latest",
+		"saschaegerer/phpstan-typo3": "^3.0",
+		"squizlabs/php_codesniffer": "^3.5",
+		"ssch/typo3-rector": "^3.14.4",
+		"symplify/easy-coding-standard": "^13.2.17",
+		"typo3/testing-framework": "^9.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Mselbach\\StaticInfoTablesFr\\": "Classes/"
+		},
+		"exclude-from-classmap": [
+			"Classes/Domain/Model"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"a9f/fractor-extension-installer": true,
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"bin-dir": ".Build/bin",
+		"vendor-dir": ".Build/vendor"
+	},
+	"extra": {
+		"typo3/cms": {
+			"Package": {
+				"providesPackages": {}
+			},
+			"extension-key": "static_info_tables_fr",
+			"version": "13.4.0",
+			"web-dir": ".Build/public"
+		}
+	},
+	"scripts": {
+		"ci:composer:normalize": "@composer normalize --no-check-lock --dry-run",
+		"ci:composer:psr-verify": "@composer dumpautoload --optimize --strict-psr --no-plugins",
+		"ci:php:ecs": ".Build/bin/ecs --config Build/ecs/ecs.php",
+		"ci:php:rector": ".Build/bin/rector process --config Build/rector/rector.php --dry-run --no-progress-bar --ansi",
+		"ci:php:stan": ".Build/bin/phpstan analyse -c Build/phpstan/phpstan.neon --no-progress --no-interaction --memory-limit 4G",
+		"fix:composer:normalize": "@composer normalize --no-check-lock",
+		"fix:php:ecs": ".Build/bin/ecs --config Build/ecs/ecs.php --fix --no-progress-bar --ansi",
+		"fix:php:rector": ".Build/bin/rector process --config Build/rector/rector.php --no-progress-bar --ansi",
+		"phpstan:baseline": ".Build/bin/phpstan analyse -c Build/phpstan/phpstan.neon --no-progress --no-interaction --memory-limit 4G --generate-baseline=Build/phpstan/phpstan-baseline.neon --allow-empty-baseline"
+	},
+	"scripts-descriptions": {
+		"ci:composer:normalize": "Checks the composer.json.",
+		"ci:composer:psr-verify": "Verifies PSR-4 namespace correctness.",
+		"ci:php:ecs": "Checks the code style with easy coding standard.",
+		"ci:php:rector": "Migrates code with Rector in dry run mode.",
+		"ci:php:stan": "Runs PHPStan to check for static analysis errors.",
+		"fix:composer:normalize": "Normalizes composer.json file content.",
+		"fix:php:ecs": "Fixes the code style with easy coding standard.",
+		"fix:php:rector": "Migrates code with Rector.",
+		"phpstan:baseline": "Generates the PHPStan baseline file."
+	}
 }

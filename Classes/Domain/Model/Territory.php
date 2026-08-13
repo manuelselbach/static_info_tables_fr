@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SJBR\StaticInfoTables\Domain\Model;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2011-2012 Armin Rüdiger Vieweg <info@professorweb.de>
@@ -27,7 +27,7 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 /**
  * The Territory model
@@ -39,29 +39,21 @@ class Territory extends AbstractEntity
 {
     /**
      * French name of the territory
-     *
-     * @var string
      */
-    protected $nameFr = '';
+    protected string $nameFr = '';
 
     /**
      * Returns the French name of the territory
-     *
-     * @return string
      */
-    public function getNameFr()
+    public function getNameFr(): string
     {
         return $this->nameFr;
     }
 
     /**
      * Sets the French name of the territory
-     *
-     * @param string $nameFr
-     *
-     * @return void
      */
-    public function setNameFr($nameFr)
+    public function setNameFr(string $nameFr): void
     {
         $this->nameFr = $nameFr;
     }

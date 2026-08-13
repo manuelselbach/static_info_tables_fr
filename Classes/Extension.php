@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mselbach\StaticInfoTablesFr;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2017 Manuel Selbach <manuel_selbach@yahoo.de>
@@ -28,7 +28,7 @@ namespace Mselbach\StaticInfoTablesFr;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 class Extension
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SJBR\StaticInfoTables\Domain\Model;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2011-2012 Armin Rüdiger Vieweg <info@professorweb.de>
@@ -27,7 +27,7 @@ namespace SJBR\StaticInfoTables\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 
 /**
  * The Country model
@@ -39,29 +39,21 @@ class Country extends AbstractEntity
 {
     /**
      * The French short name
-     *
-     * @var string
      */
-    protected $shortNameFr = '';
+    protected string $shortNameFr = '';
 
     /**
      * Gets the French short name.
-     *
-     * @return string
      */
-    public function getShortNameFr()
+    public function getShortNameFr(): string
     {
         return $this->shortNameFr;
     }
 
     /**
      * Sets the French short name.
-     *
-     * @param string $shortNameFr
-     *
-     * @return void
      */
-    public function setShortNameFr($shortNameFr)
+    public function setShortNameFr(string $shortNameFr): void
     {
         $this->shortNameFr = $shortNameFr;
     }

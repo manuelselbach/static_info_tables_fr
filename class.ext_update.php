@@ -44,15 +44,11 @@ class ext_update
      */
     public function main(): string
     {
-        $content = '';
-
         // Clear the class cache
-        /** @var ClassCacheManager $classCacheManager */
         $classCacheManager = GeneralUtility::makeInstance(ClassCacheManager::class);
         $classCacheManager->reBuild();
 
         // Update the database
-        /** @var DatabaseUpdateUtility $databaseUpdateUtility */
         $databaseUpdateUtility = GeneralUtility::makeInstance(DatabaseUpdateUtility::class);
         $databaseUpdateUtility->doUpdate(Extension::EXTENSION_KEY);
 
@@ -60,9 +56,6 @@ class ext_update
         return '<p>' . $updateLanguageLabels . ' ' . Extension::EXTENSION_KEY . '</p>';
     }
 
-    /**
-     * @return bool
-     */
     public function access(): bool
     {
         return true;

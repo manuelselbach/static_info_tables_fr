@@ -7,7 +7,7 @@ namespace Mselbach\StaticInfoTablesFr\Provider;
 use Mselbach\StaticInfoTablesFr\Extension;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-/***************************************************************
+/*
  *  Copyright notice
  *
  *  (c) 2017 Manuel Selbach <manuel_selbach@yahoo.de>
@@ -31,17 +31,16 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ */
 class TcaProvider
 {
     /**
      * @var string Path to language file of labels in the backend
      */
-    protected static $LL = 'LLL:EXT:%s/Resources/Private/Language/locallang_db.xlf:%s_item.%s';
+    protected static string $LL = 'LLL:EXT:%s/Resources/Private/Language/locallang_db.xlf:%s_item.%s';
 
     /**
-     * @param array  $additionalFields
-     * @param string $dataSetName
+     * @param array<string, string> $additionalFields
      */
     public static function generateAndRegisterTca(array $additionalFields, string $dataSetName): void
     {
@@ -62,7 +61,9 @@ class TcaProvider
                 'after:' . $sourceField
             );
             // Add as search field
-            $GLOBALS['TCA'][$dataSetName]['ctrl']['searchFields'] .= ',' . $destField;
+            if (isset($GLOBALS['TCA'][$dataSetName]['ctrl']['searchFields'])) {
+                $GLOBALS['TCA'][$dataSetName]['ctrl']['searchFields'] .= ',' . $destField;
+            }
         }
     }
 }
